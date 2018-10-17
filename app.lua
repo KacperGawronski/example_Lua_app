@@ -35,5 +35,6 @@ function process_request(http_request)
 		else
 			print("HACKERZ SPOTTED")
 		end
+	end
 	return main
 end
