@@ -16,7 +16,7 @@ https://www.gnu.org/licenses/
 --]]
 require("index.lua")
 require("menu.lua")
-
+require("head.lua")
 function process_request(http_request)
 	local function main()
 		local GET_value=string.gsub(http_request,"GET (.-) HTTP/1%.1.*","%1")
@@ -24,10 +24,12 @@ function process_request(http_request)
 
 		if GET_value=="/" then
 			coroutine.yield("<html><body>")
-			coroutine.yield("<div id=\"header\">Example project</div>")
-			coroutine.yield("<div id=\"menu\">"..generate_menu().."</div>")
-			coroutine.yield("<div id=\"main\">")
-				while(n=generate_content()) do coroutine.yield(n) end
+				while(content=generate_head()) do coroutine.yield(content) end
+			coroutine.yield("<h1 id=\"header\">Example project</h1>")
+			coroutine.yield("<div id=\"menu\">"
+				while(content=generate_menu()) do coroutine.yield(content) end
+			coroutine.yield("</div><div id=\"main\">")
+				while(content=generate_content()) do coroutine.yield(content) end
 			coroutine.yield("</div>")
 			coroutine.yield("</body></html>")
 		else

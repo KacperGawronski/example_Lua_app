@@ -1,6 +1,8 @@
 
 function generate_content()
-	coroutine.yield("<div id=\"table_buttons\">"..table_buttons().."</div>")
-	coroutine.yield("<div id=\"main_table_div\"><table id=\"main_table\">")
-	coroutine.yield("</table></div>")
+	coroutine.yield("<h2>Welcome to open example of Lua_WebServer and Example Lua App</h2></br>")
+	coroutine.yield("You can find them on github:</br>")
+	coroutine.yield("<a href=\"https://github.com/KacperGawronski/Lua_Webserver\">Lua_Webserver</a></br>")
+	coroutine.yield("<a href=\"https://github.com/KacperGawronski/example_Lua_app\">example_Lua_app</a></br>")
+	coroutine.yield("Both are licensed under GNU General Public License v3")
 end
