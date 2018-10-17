@@ -14,9 +14,9 @@ You should have received a copy of the GNU General Public License
 along with Example Lua App. If not, see
 https://www.gnu.org/licenses/
 --]]
-require("index.lua")
-require("menu.lua")
-require("head.lua")
+dofile("index.lua")
+dofile("menu.lua")
+dofile("head.lua")
 function process_request(http_request)
 	local function main()
 		local GET_value=string.gsub(http_request,"GET (.-) HTTP/1%.1.*","%1")
