@@ -26,12 +26,12 @@ function process_request(http_request)
 
 		if GET_value=="/" then
 			coroutine.yield("<html><body>")
-			--	for content in generate_head() do if content coroutine.yield(content) end end
+				for content in generate_head() do if content then coroutine.yield(content) end end
 			coroutine.yield("<h1 id=\"header\">Example project</h1>")
-			coroutine.yield("<div id=\"menu\">"
-			--	for content in generate_menu() do if content then coroutine.yield(content) end end
+			coroutine.yield("<div id=\"menu\">")
+				for content in generate_menu() do if content then coroutine.yield(content) end end
 			coroutine.yield("</div><div id=\"main\">")
-			--	for content in generate_content() do if content then coroutine.yield(content) end end
+				for content in generate_content() do if content then coroutine.yield(content) end end
 			coroutine.yield("</div>")
 			coroutine.yield("</body></html>")
 		else
