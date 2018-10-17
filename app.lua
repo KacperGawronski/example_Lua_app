@@ -24,7 +24,11 @@ function process_request(http_request)
 			coroutine.yield("<html><body>")
 			coroutine.yield("<div id=\"header\">Example project</div>")
 			coroutine.yield("<div id=\"menu\">"..generate_menu().."</div>")
-			coroutine.yield("<div id=\"main\">")
+				coroutine.yield("<div id=\"main\">")
+					coroutine.yield("<div id=\"table_buttons\">"..table_buttons().."</div>")
+					coroutine.yield("<div id=\"main_table_div\"><table id=\"main_table\">"
+				
+					coroutine.yield("</table></div>")
 			coroutine.yield("</div>")
 			coroutine.yield("</body></html>")
 		else
