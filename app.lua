@@ -14,15 +14,15 @@ You should have received a copy of the GNU General Public License
 along with Example Lua App. If not, see
 https://www.gnu.org/licenses/
 
-
+--]]
 dofile("index.lua")
 dofile("menu.lua")
 dofile("head.lua")
---]]
+
 function process_request(http_request)
 	local function main()
 		local GET_value=string.gsub(http_request,"GET (.-) HTTP/1%.1.*","%1")
-		coroutine.yield("GHTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection: close\r\n\r\n")
+		coroutine.yield("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection: close\r\n\r\n")
 
 		if GET_value=="/" then
 			coroutine.yield("<html><body>")
@@ -35,7 +35,7 @@ function process_request(http_request)
 			coroutine.yield("</div>")
 			coroutine.yield("</body></html>")
 		else
-			print("HACKERZ SPOTTED")
+			coroutine.yield(":D")
 		end
 	end
 	return main
