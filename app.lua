@@ -14,25 +14,24 @@ You should have received a copy of the GNU General Public License
 along with Example Lua App. If not, see
 https://www.gnu.org/licenses/
 --]]
-
+require("index.lua")
+require("menu.lua")
 
 function process_request(http_request)
 	local function main()
 		local GET_value=string.gsub(http_request,"GET (.-) HTTP/1%.1.*","%1")
 		coroutine.yield("GHTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection: close\r\n\r\n")
+
 		if GET_value=="/" then
 			coroutine.yield("<html><body>")
 			coroutine.yield("<div id=\"header\">Example project</div>")
 			coroutine.yield("<div id=\"menu\">"..generate_menu().."</div>")
-				coroutine.yield("<div id=\"main\">")
-					coroutine.yield("<div id=\"table_buttons\">"..table_buttons().."</div>")
-					coroutine.yield("<div id=\"main_table_div\"><table id=\"main_table\">"
-				
-					coroutine.yield("</table></div>")
+			coroutine.yield("<div id=\"main\">")
+				while(n=generate_content()) do coroutine.yield(n) end
 			coroutine.yield("</div>")
 			coroutine.yield("</body></html>")
 		else
-			
-		end	end
+			print("HACKERZ SPOTTED")
+		end
 	return main
 end
